@@ -55,9 +55,10 @@ def main():
         success, img = cap.read()
         img=detector.findPose(img)
         lmList=detector.findPostions(img)
-        print(lmList[14])
-        # To generate the circle for which position we are tracking the list
-        cv2.circle(img, (lmList[14][1], lmList[14][2]), 10, (0, 0, 255), cv2.FILLED)
+        if len(lmList)!=0:
+            print(lmList[14])
+            # To generate the circle for which position we are tracking the list
+            cv2.circle(img, (lmList[14][1], lmList[14][2]), 10, (0, 0, 255), cv2.FILLED)
 
         cTime = time.time()
         fps = 1 / (cTime - pTime)
